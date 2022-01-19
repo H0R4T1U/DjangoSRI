@@ -1,0 +1,23 @@
+{% extends "SRI/layout.html" %}
+{% block body %}
+
+    <h1>YOO</h1>
+<form method="post">
+    {% csrf_token %}
+
+    <label for="website">
+        Url:<input type="url" name="website" placeholder="https://www.wikipedia.org/">
+    </label>
+
+    <label for="containerClass">
+        Container class:<input type="text" name="containerClass" placeholder="container_class">
+    </label>
+
+    <label for="ScrappedClasses">
+        Scrapped classes:<input type="text" name="ScrappedClasses" placeholder="class_1 class_2 ...">
+    </label>
+
+    <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Submit</button>
+</form>
+
+{% endblock %}

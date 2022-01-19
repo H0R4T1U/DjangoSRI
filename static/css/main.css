@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Bona+Nova&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap');
+header{
+    font-family: 'Ubuntu', sans-serif;
+}
+main#main{
+    overflow: auto;
+    font-family: 'Bona Nova', serif;
+    font-weight: bold;
+
+}
+
+@media screen and (max-width: 576px) { 
+    button[type="submit"]{
+        margin:auto
+    }
+    nav.navbar{
+        margin:auto;
+        text-align: center;
+        display: block !important;
+    }
+    table.table{
+        overflow: auto;
+    }
+ }
+
