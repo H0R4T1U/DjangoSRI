@@ -6,6 +6,7 @@ from Utils import Scrapper
 
 
 def index(request):
+    context = {"websites": Website.objects.all()}
     try:
         name = request.POST["name"]
         url = request.POST["website"]
@@ -18,5 +19,5 @@ def index(request):
 
     except:
         pass
-    return render(request, 'SRI/index.html')
+    return render(request, 'SRI/index.html',context)
 

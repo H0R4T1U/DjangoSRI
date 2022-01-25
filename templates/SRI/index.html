@@ -1,4 +1,5 @@
 {% extends "SRI/layout.html" %}
+{% load static %}
 {% block body %}
 
     <h1>YOO</h1>
@@ -24,4 +25,27 @@
     <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Submit</button>
 </form>
 
+    <div class="container">
+            <div id="accordion">
+            {% for website in websites %}
+
+                        <div class="card">
+                            <div class="card-header" id="headingOne">
+                                <h5 class="mb-0">
+                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapse{{ website.id }}" aria-expanded="true" aria-controls="collapse{{ website.id }}">
+                                    {{website.name}}
+                                </button>
+                                </h5>
+                            </div>
+                            <div id="collapse{{website.id}}" class="collapse show" aria-labelledby="heading{{website.id}}" data-parent="#accordion">
+                                <div class="card-body">
+                                    <p>url: {{website.url}} container class: {{website.container_class}} classes:{{  website.classes }}</p>
+                                    <a class="btn btn-primary" href="{%  static '/dataframes/'|add:website.name %}.csv" role="button" download>Link</a>
+                                </div>
+                            </div>
+                        </div>
+
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}
