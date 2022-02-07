@@ -2,48 +2,46 @@
 {% load static %}
 {% block body %}
 
-    <h1>YOO</h1>
-<form method="post">
-    {% csrf_token %}
 
-    <label for="name">
-        File name::<input type="text" name="name" placeholder="Products" value="Article">
-    </label>
 
-    <label for="website">
-        Url:<input type="url" name="website" placeholder="https://www.wikipedia.org/" value="https://www.hoover.org/">
-    </label>
+<div class="container">
+        <form method="post">
+            {% csrf_token %}
 
-    <label for="containerClass">
-        Container class:<input type="text" name="containerClass" placeholder="container_class" value="row-1">
-    </label>
+            <label class="form-label" for="name">File name
+                <input class="form-control" type="text" name="name" placeholder="Products" value="Article">
+            </label>
 
-    <label for="ScrappedClasses">
-        Scrapped classes:<input type="text" name="ScrappedClasses" placeholder="class_1 class_2 ..." value="pane-item-title pane-meta field-authors pane-meta field-date">
-    </label>
 
-    <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Submit</button>
-</form>
+            <label class="form-label" for="website">Url
+                <input class="form-control" type="url" name="website" placeholder="https://www.wikipedia.org/" value="https://www.hoover.org/">
+            </label>
 
-    <div class="container">
-            <div id="accordion">
+            <label class="form-label" FOR="containerClass">Container Class
+                <input class="form-control" type="text" name="containerClass" placeholder="container_class" value="row-1">
+            </label>
+
+            <label class="form-label" for="scrappedClasses" >Scrapped Classes
+                <input class="form-control" type="text" name="scrappedClasses" placeholder="class_1 class_2 ..." value="pane-item-title pane-meta field-authors pane-meta field-date">
+            </label>
+            <button class="btn btn-primary" type="submit">Submit</button>
+        </form>
+    </div>
+
+    <div class="container mt-4">
+        <div class="accordion" role="tablist" id="accordion-1">
             {% for website in websites %}
-
-                        <div class="card">
-                            <div class="card-header" id="headingOne">
-                                <h5 class="mb-0">
-                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapse{{ website.id }}" aria-expanded="true" aria-controls="collapse{{ website.id }}">
-                                    {{website.name}}
-                                </button>
-                                </h5>
-                            </div>
-                            <div id="collapse{{website.id}}" class="collapse show" aria-labelledby="heading{{website.id}}" data-parent="#accordion">
-                                <div class="card-body">
-                                    <p>url: {{website.url}} container class: {{website.container_class}} classes:{{  website.classes }}</p>
-                                    <a class="btn btn-primary" href="{%  static '/dataframes/'|add:website.name %}.csv" role="button" download>Link</a>
-                                </div>
-                            </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" role="tab">
+                        <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#accordion-1 .item-{{ website.id }}" aria-expanded="true" aria-controls="accordion-1 .item-{{ website.id }}">{{website.name}}</button>
+                    </h2>
+                </div>
+                <div class="accordion-collapse collapse  item-{{website.id}}" role="tabpanel" data-bs-parent="#accordion-1">
+                        <div class="accordion-body">
+                            <p>url: {{website.url}}  container class: {{website.container_class}} classes:{{  website.classes }}</p>
+                            <a class="btn btn-primary" href="{%  static '/dataframes/'|add:website.name %}.csv" role="button" download>Download</a>
                         </div>
+                </div>
 
             {% endfor %}
         </div>

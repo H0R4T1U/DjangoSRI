@@ -11,7 +11,7 @@ def index(request):
         name = request.POST["name"]
         url = request.POST["website"]
         container = request.POST["containerClass"]
-        classes = request.POST["ScrappedClasses"].split(" ")
+        classes = request.POST["scrappedClasses"].split(" ")
         website = Website(name=name, url=url, container_class=container, classes=classes)
 
         Scrapper.scrap(website)

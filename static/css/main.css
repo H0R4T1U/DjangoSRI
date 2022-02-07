@@ -10,6 +10,12 @@ main#main{
 
 }
 
+.container form{
+    text-align: center;
+}
+button.btn{
+    display: block;margin: 0 auto;
+}
 @media screen and (max-width: 576px) { 
     button[type="submit"]{
         margin:auto
@@ -23,4 +29,17 @@ main#main{
         overflow: auto;
     }
  }
+
+@media (max-width: 900px) {
+  div.container {
+    /*margin: 0 auto;*/
+    width: 50%;
+  }
+}
+
+@media (min-width: 992px) {
+  label.form-label {
+    margin-right: 6px;
+  }
+}
 
